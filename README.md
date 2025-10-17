@@ -14,10 +14,21 @@ Mini-app **Next.js + Tailwind + OpenAI** qui génère une citation inspirante de
 ---
 
 ## ✨ Étape 2 – Interface & Mock Quotes
-- Ajout d’un bouton **“Générer une citation”**
-- Création d’une liste de citations simulées (mock)
-- Affichage dynamique d’une citation aléatoire au clic
+Créer une interface simple et interactive pour permettre à l’utilisateur de générer une citation inspirante de l’univers Star Wars.
 
+### 🧩 Réalisations
+- Ajout d’un bouton **“Générer une citation”**
+- Intégration d’une liste de **citations simulées (mock quotes)**
+- Génération aléatoire d’une citation au clic
+- Mise en forme avec **Tailwind CSS** pour un rendu minimaliste et immersif
+
+### 🧠 Points techniques
+- Utilisation du hook **`useState`** pour gérer la citation affichée
+- Gestion d’un **événement `onClick`** sur le bouton pour déclencher la génération
+- Structure du composant sous forme de **fonction React client-side**
+
+### ✅ Résultat
+Une page responsive affichant un bouton et une citation différente à chaque clic
 ---
 
 ## 🧩 Stack technique
