@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌌 Star Wars Motivator
 
-## Getting Started
+Mini-app **Next.js + Tailwind + OpenAI** qui génère une citation inspirante de l’univers Star Wars.
 
-First, run the development server:
+---
 
+## 🧱 Étape 1 – Mise en place du projet
+- Initialisation du projet avec **Next.js**, **TypeScript** et **Tailwind CSS**
+- Suppression du code par défaut et création d’une **landing page minimaliste**
+- Mise en place de **Git** et du dépôt **GitHub**.
+- Création de la branche `feat/landing-skeleton`.
+- Première version du **README** et configuration du workflow.
+
+---
+
+## ✨ Étape 2 – Interface & Mock Quotes
+Créer une interface simple et interactive pour permettre à l’utilisateur de générer une citation inspirante de l’univers Star Wars.
+
+### 🧩 Réalisations
+- Ajout d’un bouton **“Générer une citation”**.
+- Intégration d’une liste de **citations simulées (mock quotes)**.
+- Génération aléatoire d’une citation au clic.
+- Mise en forme avec **Tailwind CSS** pour un rendu minimaliste et immersif.
+
+### 🧠 Points techniques
+- Utilisation du hook **`useState`** pour gérer la citation affichée.
+- Gestion d’un **événement `onClick`** sur le bouton pour déclencher la génération.
+- Structure du composant sous forme de **fonction React client-side**.
+
+### ✅ Résultat
+Une page responsive affichant un bouton et une citation différente à chaque clic.
+---
+
+## 🧩 Stack technique
+Next.js • TypeScript • TailwindCSS • OpenAI API • Vercel • Git/GitHub
+
+---
+
+## 🚀 Démarrer le projet
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
