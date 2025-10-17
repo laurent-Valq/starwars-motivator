@@ -11,9 +11,16 @@ export default function Home() {
 
   const [quote, setQuote] = useState("");
 
-  const generateQuote = () => {
-    const randomIndex = Math.floor(Math.random() * mockQuotes.length);
-    setQuote(mockQuotes[randomIndex]);
+  const generateQuote = async () => {
+    try {
+      const res = await fetch("/api/generate");
+      if (!res.ok) throw new Error("Erreur serveur");
+      const data = await res.json();
+      setQuote(data.quote);
+    } catch (error) {
+      console.error("Erreur :", error);
+      setQuote("Impossible de générer la citation.");
+    }
   };
 
   return (
