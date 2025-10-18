@@ -36,6 +36,34 @@ Next.js • TypeScript • TailwindCSS • OpenAI API • Vercel • Git/GitHub
 
 ---
 
+
+## 🚀 Étape 3 : Intégration de l’API OpenAI
+
+### Objectif
+Connecter le front-end à une route API interne pour générer en temps réel des citations inspirées de Star Wars grâce à OpenAI.
+
+### Fichiers concernés
+- `src/app/api/generate/route.ts`  
+- `src/app/page.tsx`  
+- `.env.local` (non versionné)
+
+### Détails techniques
+- Création d’un endpoint `/api/generate` utilisant le modèle **gpt-4o-mini**.  
+- Le front appelle cette route via `fetch("/api/generate")`.  
+- Gestion des erreurs 401 et 429 avec messages clairs dans la console.  
+- Clé OpenAI stockée localement dans `.env.local` (jamais commitée).
+
+### Tests
+- Lancer `npm run dev`.  
+- Cliquer sur **“Générer une citation”**.  
+- Vérifier que la réponse renvoie une phrase motivante dans le style Star Wars.
+
+### Résultat attendu
+Une citation générée dynamiquement apparaît sous le bouton, confirmant la bonne communication front ↔ API ↔ OpenAI.
+
+---
+
+
 ## 🚀 Démarrer le projet
 ```bash
 npm install
