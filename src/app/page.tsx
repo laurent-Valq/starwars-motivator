@@ -1,41 +1,46 @@
 "use client";
+
 import { useState } from "react";
 
 export default function Home() {
-  const mockQuotes = [
-    "Que la Force soit avec toi.",
-    "Fais-le ou ne le fais pas, il n’y a pas d’essai.",
-    "Ton focus détermine ta réalité.",
-    "Luke arrête de chialer.",
-  ];
-
   const [quote, setQuote] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const generateQuote = async () => {
+    setLoading(true);
     try {
       const res = await fetch("/api/generate");
       if (!res.ok) throw new Error("Erreur serveur");
       const data = await res.json();
       setQuote(data.quote);
     } catch (error) {
-      console.error("Erreur :", error);
-      setQuote("Impossible de générer la citation.");
+      console.error("Erreur OpenAI :", error);
+      setQuote("Impossible de communiquer avec la Force...");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-black text-yellow-400 p-8">
-      <h1 className="text-4xl font-bold mb-8">Star Wars Motivator</h1>
-
+    <main className="flex flex-col items-center justify-center min-h-screen space-y-6 bg-black text-yellow-400">
+      <h1 className="text-5xl font-bold tracking-widest animate-fade-in">
+        STAR WARS MOTIVATOR
+      </h1>
+  
       <button
         onClick={generateQuote}
-        className="bg-yellow-400 text-black px-6 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition"
+        disabled={loading}
+        className="bg-yellow-400 text-black font-bold px-6 py-2 rounded-lg shadow-md hover:bg-yellow-300 hover:scale-105 transition-transform duration-300"
       >
-        Générer une citation
+        {loading ? "Connexion à la Force..." : "Générer une citation"}
       </button>
-
-      <p className="mt-6 text-xl italic text-center">{quote}</p>
+  
+      {quote && (
+        <p className="mt-8 text-lg text-yellow-300 animate-fade-in max-w-lg">
+          “{quote}”
+        </p>
+      )}
     </main>
   );
+  
 }
-
