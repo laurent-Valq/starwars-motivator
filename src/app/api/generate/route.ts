@@ -5,18 +5,23 @@ const client = new OpenAI({
 });
 
 export async function GET() {
-  const prompt = "Génère une courte citation inspirante dans le style Star Wars.";
-
-  try {
-    const response = await client.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [{ role: "user", content: prompt }],
-    });
-
-    const quote = response.choices[0].message.content;
-    return new Response(JSON.stringify({ quote }), { status: 200 });
-  } catch (error) {
-    console.error("Erreur OpenAI :", error);
-    return new Response(JSON.stringify({ error: 'Erreur lors de la génération.' }), { status: 500 });
+    const startAPI = Date.now();
+    const prompt = "Génère une citation courte et inspirante de l'univers Star Wars. Mais n'utilise pas trop souvent les mots obscurité et ombre, ou même lumière.";
+  
+    try {
+      const response = await client.chat.completions.create({
+        model: "gpt-4o-mini",
+        messages: [{ role: "user", content: prompt }],
+        max_tokens: 20,
+        temperature: 0.7,
+      });
+  
+      console.log(`⏱️ Temps API: ${Date.now() - startAPI}ms`);
+  
+      const quote = response.choices[0].message.content;
+      return Response.json({ quote });
+    } catch (error) {
+      console.error("Erreur:", error);
+      return Response.json({ error: 'Erreur' }, { status: 500 });
+    }
   }
-}

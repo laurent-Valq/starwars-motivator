@@ -19,7 +19,7 @@
   }
 }
 
-/* --- Star Wars theme additions --- */
+/* --- Star Wars theme --- */
 
 body {
   background-color: black;
@@ -29,24 +29,44 @@ body {
   overflow-x: hidden;
 }
 
-@keyframes crawl {
+/* --- Animation de défilement vertical --- */
+
+.scroll-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  perspective: 500px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.scroll-content {
+  position: absolute;
+  bottom: 0%;              /* ⬅️ Retour à bottom, commence en bas */
+  left: 50%;
+  transform: translateX(-50%) rotateX(25deg);
+  width: 80%;
+  max-width: 800px;
+  text-align: center;
+  animation: crawlUp 22s linear forwards;
+  transform-origin: 50% 100%;
+}
+
+@keyframes crawlUp {
   0% {
-    transform: translateY(100%) rotateX(20deg);
+    bottom: 0%;          /* ⬅️ Bas de l'écran */
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
   }
   100% {
-    transform: translateY(-200%) rotateX(25deg);
+    bottom: 150%;        /* ⬅️ Sort par le haut */
+    opacity: 0;
   }
 }
-
-.crawl {
-  perspective: 400px;
-  color: #FFE81F;
-  font-size: 1.25rem;
-  line-height: 1.5;
-  text-transform: uppercase;
-  animation: crawl 60s linear infinite;
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
