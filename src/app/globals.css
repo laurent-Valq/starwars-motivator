@@ -1,4 +1,21 @@
 @import "tailwindcss";
+/* --- Star Wars font --- */
+@font-face {
+  font-family: 'StarJedi';
+  src: url('/fonts/Starjedi.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'StarJout';
+  src: url('/fonts/Starjout.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 
 :root {
   --background: #ffffff;
@@ -26,9 +43,13 @@
 body {
   background-color: black;
   color: #FFE81F;
-  font-family: 'Orbitron', sans-serif;
   text-align: center;
   overflow-x: hidden;
+}
+
+/* ⬇️ Classe pour le titre uniquement */
+.star-wars-font {
+  font-family: 'StarJedi', sans-serif;
 }
 
 /* --- Animation de défilement vertical --- */
