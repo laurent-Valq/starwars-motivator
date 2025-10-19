@@ -31,7 +31,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-black text-yellow-400 overflow-hidden">
-      <h1 className="text-5xl font-bold tracking-widest animate-fade-in mb-8">
+      <h1 className="text-5xl font-bold tracking-widest animate-fade-in mb-8 title-crawl">
         STAR WARS MOTIVATOR
       </h1>
   
