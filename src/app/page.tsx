@@ -2,10 +2,22 @@
 
 import { useState } from "react";
 
+// ⬇️ FONCTION POUR GENERER LES ETOILES
+const generateStars = (count: number) => {
+  return Array.from({ length: count }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size: ['star-small', 'star-medium', 'star-large'][Math.floor(Math.random() * 3)],
+    delay: Math.random() * 3
+  }));
+};
+
 export default function Home() {
   const [quote, setQuote] = useState("");
   const [loading, setLoading] = useState(false);
   const [showScroll, setShowScroll] = useState(false);
+  const stars = generateStars(200); // ⬅️ LIRE LE NOMBRE D'ETOILES
 
   const generateQuote = async () => {
     const startFront = performance.now();
@@ -30,6 +42,23 @@ export default function Home() {
   };
 
   return (
+    <>
+      {/* ⬇️ AJOUTEZ CE BLOC AVANT <main> */}
+      <div className="starfield">
+        {stars.map(star => (
+          <div
+            key={star.id}
+            className={`star ${star.size}`}
+            style={{
+              left: `${star.x}%`,
+              top: `${star.y}%`,
+              animationDelay: `${star.delay}s`
+            }}
+          />
+        ))}
+      </div>
+
+      
     <main className="flex flex-col items-center justify-start pt-160 min-h-screen bg-black text-yellow-400 overflow-hidden">
 
       {/* ⬇️ Overlay noir AJOUTÉ ICI */}
@@ -74,5 +103,6 @@ export default function Home() {
         </div>
       )}
     </main>
+    </>
   );
 }
