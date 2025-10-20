@@ -78,7 +78,7 @@ export default function Home() {
 
 
       
-      <h1 className={`text-6xl font-bold tracking-widest animate-fade-in mb-8 title-crawl relative z-30 star-wars-font text-black transition-opacity duration-10000 ${showScroll ? 'opacity-20' : 'opacity-100'}`}
+      <h1 className={`text-6xl font-bold tracking-widest animate-fade-in mb-8 title-crawl relative z-30 star-wars-font text-black transition-opacity duration-7000 ${showScroll ? 'opacity-20' : 'opacity-100'}`}
           style={{ textShadow: '0 0 4px rgba(255, 232, 31, 0.5), 0 0 8px rgba(255, 232, 31, 0.25)', 
             WebkitTextStroke: '2px #FFE81F'  /* ⬅️ Contour jaune de 2px */
           }}>
