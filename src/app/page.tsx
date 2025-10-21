@@ -1,12 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+// ⬇️ FONCTION POUR GENERER LES ETOILES
+const generateStars = (count: number) => {
+  return Array.from({ length: count }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size: ['star-small', 'star-medium', 'star-large'][Math.floor(Math.random() * 3)],
+    delay: Math.random() * 3
+  }));
+};
 
 export default function Home() {
   const [quote, setQuote] = useState("");
   const [loading, setLoading] = useState(false);
   const [showScroll, setShowScroll] = useState(false);
+  const [stars, setStars] = useState<any[]>([]); // ⬅️ État pour les étoiles 
 
+  // ⬇️ Générer les étoiles uniquement côté client
+  useEffect(() => {
+    setStars(generateStars(200));
+  }, []);
+  
   const generateQuote = async () => {
     const startFront = performance.now();
     setLoading(true);
@@ -30,6 +47,24 @@ export default function Home() {
   };
 
   return (
+    <>
+      {/* Fond étoilé */}
+      {stars.length > 0 && ( // ⬅️ Afficher seulement si stars est rempli
+      <div className="starfield">
+        {stars.map(star => (
+          <div
+            key={star.id}
+            className={`star ${star.size}`}
+            style={{
+              left: `${star.x}%`,
+              top: `${star.y}%`,
+              animationDelay: `${star.delay}s`
+            }}
+          />
+        ))}
+      </div>
+      )}
+      
     <main className="flex flex-col items-center justify-start pt-160 min-h-screen bg-black text-yellow-400 overflow-hidden">
 
       {/* ⬇️ Overlay noir AJOUTÉ ICI */}
@@ -74,5 +109,6 @@ export default function Home() {
         </div>
       )}
     </main>
+    </>
   );
 }
