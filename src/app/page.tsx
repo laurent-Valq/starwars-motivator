@@ -30,18 +30,27 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen bg-black text-yellow-400 overflow-hidden">
-      <h1 className="text-6xl font-bold tracking-widest animate-fade-in mb-8 title-crawl">
+    <main className="flex flex-col items-center justify-start pt-160 min-h-screen bg-black text-yellow-400 overflow-hidden">
+
+      {/* ⬇️ Overlay noir AJOUTÉ ICI */}
+      <div className="fixed bottom-0 left-0 w-full h-44 bg-gradient-to-t from-black via-black/80 to-transparent z-10 pointer-events-none"></div>
+
+
+      
+      <h1 className="text-6xl font-bold tracking-widest animate-fade-in mb-8 title-crawl relative z-30 star-wars-font text-black"
+          style={{ textShadow: '0 0 4px rgba(255, 232, 31, 0.5), 0 0 8px rgba(255, 232, 31, 0.25)', 
+            WebkitTextStroke: '2px #FFE81F'  /* ⬅️ Contour jaune de 2px */
+          }}>
         STAR WARS 
         <br />
-        MOTIVATOR
+        motivator
       </h1>
   
       <button
         onClick={generateQuote}
         disabled={loading}
-        className="bg-yellow-400 text-black font-bold px-6 py-3 rounded-lg shadow-md hover:bg-yellow-300 hover:scale-105 transition-transform duration-300 disabled:opacity-50 disabled:cursor-not-allowed z-10"
-        style={{ transform: 'perspective(500px) rotateX(40deg)' }}
+        className="text-black font-bold px-6 py-3 rounded-lg shadow-md hover:bg-yellow-300 hover:scale-105 transition-transform duration-300 disabled:opacity-50 disabled:cursor-not-allowed relative z-20"
+        style={{ transform: 'perspective(500px) rotateX(40deg)', backgroundColor: '#FFE81F' }}
       >
         {loading ? (
           <span className="flex items-center gap-2">
@@ -57,8 +66,8 @@ export default function Home() {
       {showScroll && quote && (
         <div className="scroll-container">
           <div className="scroll-content">
-            <p className="text-5xl text-yellow-400 leading-relaxed font-bold"
-            style={{ textShadow: '0 0 10px rgba(255, 232, 31, 0.8), 0 0 20px rgba(255, 232, 31, 0.4)' }}>
+            <p className="text-5xl leading-relaxed font-bold"
+            style={{ color: '#FFE81F', textShadow: '0 0 6px rgba(255, 232, 31, 0.6), 0 0 12px rgba(255, 232, 31, 0.3)' }}>
               {quote}
             </p>
           </div>
