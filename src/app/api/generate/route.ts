@@ -4,9 +4,13 @@ const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-export async function GET() {
+export async function POST(req: Request) {
     const startAPI = Date.now();
-    const prompt = "Génère une citation courte et inspirante de l'univers Star Wars. Mais n'utilise pas trop souvent les mots obscurité et ombre, ou même lumière.";
+    const { language } = await req.json();
+
+    const prompt = language === "fr" 
+    ? "Génère une citation courte et inspirante de l'univers Star Wars. Mais n'utilise pas trop souvent les mots obscurité et ombre, ou même lumière." 
+    : "Generate a short and inspiring quote from the Star Wars universe. But don't use the words darkness and shadow too often, or even light.";
   
     try {
       const response = await client.chat.completions.create({

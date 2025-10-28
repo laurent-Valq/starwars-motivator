@@ -17,6 +17,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [showScroll, setShowScroll] = useState(false);
   const [stars, setStars] = useState<any[]>([]);
+  const [language, setLanguage] = useState<"fr" | "en">("fr");
   
   const ambianceRef = useRef<HTMLAudioElement | null>(null);
   const quoteRef = useRef<HTMLAudioElement | null>(null);
@@ -48,7 +49,11 @@ export default function Home() {
     }
     
     try {
-      const res = await fetch("/api/generate");
+      const res = await fetch("/api/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ language }),
+      });
       console.log(`⏱️ Frontend: ${(performance.now() - startFront).toFixed(0)}ms`);
       
       if (!res.ok) throw new Error("Erreur serveur");
@@ -114,6 +119,37 @@ export default function Home() {
           <br />
           motivator
         </h1>
+
+        {/* 🌍 Language Toggle Switch */}
+        <div className="absolute top-6 right-6">
+          <button
+            onClick={() => setLanguage(language === "fr" ? "en" : "fr")}
+            className="relative w-20 h-10 bg-yellow-300 rounded-full flex items-center justify-between px-2 transition-all duration-300 shadow-md border border-yellow-300"
+          >
+            {/* Drapeau FR */}
+            <span className={`text-black text-lg transition-opacity duration-300 ${
+              language === "fr" ? "opacity-100" : "opacity-100"
+            }`}>
+              🇫🇷
+            </span>
+            
+            {/* Drapeau EN */}
+            <span className={`text-black text-lg transition-opacity duration-300 ${
+              language === "en" ? "opacity-100" : "opacity-100"
+            }`}>
+              🇬🇧
+            </span>
+            
+            {/* Pastille coulissante */}
+            <span
+              className={`absolute top-1 w-8 h-8 bg-black rounded-full shadow-lg transform transition-all duration-300 ${
+                language === "fr" ? "translate-x-0" : "translate-x-8"
+              }`}
+            ></span>
+          </button>
+        </div>
+
+
     
         <button
           onClick={generateQuote}
