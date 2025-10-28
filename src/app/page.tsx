@@ -161,7 +161,7 @@ export default function Home() {
             <span className="flex items-center gap-2">
               <span className="animate-spin">⚡</span>
               {language === "fr" ? "Connexion à la Force..." : "Connecting to the Force..."}
-              Connexion à la Force...
+              {/*Connexion à la Force... */}
             </span>
           ) : (
             language === "fr" 
