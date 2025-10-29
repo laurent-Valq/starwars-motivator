@@ -72,7 +72,10 @@ export default function Home() {
       
     } catch (error) {
       console.error("Erreur:", error);
-      setQuote("Impossible de communiquer avec la Force...");
+      setQuote(language === "fr"
+        ? "Impossible de communiquer avec la Force..."
+        : "Unable to communicate with the Force..."
+      );
       
       setTimeout(() => {
         setShowScroll(true);
