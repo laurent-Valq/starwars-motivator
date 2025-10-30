@@ -29,7 +29,7 @@ export default function Home() {
     ambianceRef.current = new Audio('/starwars-ambiance.mp3');
     ambianceRef.current.loop = true;
     ambianceRef.current.volume = 0.2;
-    ambianceRef.current.play();
+    {/*ambianceRef.current.play();*/}
     
     // Musique de citation
     quoteRef.current = new Audio('/starwars-theme.mp3');
