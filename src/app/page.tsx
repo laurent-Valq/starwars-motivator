@@ -18,6 +18,7 @@ export default function Home() {
   const [isWriting, setIsWriting] = useState(false);
   const [showScroll, setShowScroll] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [isSoundOn, setIsSoundOn] = useState(true);
   const [stars, setStars] = useState<any[]>([]);
   const [language, setLanguage] = useState<"fr" | "en">("fr");
   
@@ -51,7 +52,7 @@ export default function Home() {
     
     // Arrêter l'ambiance et lancer la musique de citation
     ambianceRef.current?.pause();
-    if (quoteRef.current) {
+    if (quoteRef.current && isSoundOn) {
       quoteRef.current.currentTime = 0;
       quoteRef.current.play();
     }
@@ -78,7 +79,9 @@ export default function Home() {
         setShowScroll(false);
         setIsScrolling(false);
         quoteRef.current?.pause();
-        ambianceRef.current?.play();
+        if (isSoundOn) {
+          ambianceRef.current?.play();
+        }
         setIsWriting(false);
         setLoading(false);
       }, 50000);
@@ -99,7 +102,9 @@ export default function Home() {
         setShowScroll(false);
         setIsScrolling(false);
         quoteRef.current?.pause();
-        ambianceRef.current?.play();
+        if (isSoundOn) {
+          ambianceRef.current?.play();
+        }
         setIsWriting(false);
         setLoading(false);
       }, 50000);
@@ -141,14 +146,15 @@ export default function Home() {
           motivator
         </h1>
 
-        {/* 🌍 Language Toggle Switch */}
-        <div className="absolute top-6 right-6">
+        {/* Language and Sound Toggle Switches - Top Right */}
+        <div className="absolute top-6 right-6 flex flex-col gap-4">
+          {/* 🌍 Language Toggle Switch */}
           <button
             onClick={() => setLanguage(language === "fr" ? "en" : "fr")}
             disabled={loading || isWriting}
             className={`relative w-20 h-10 bg-yellow-300 rounded-full flex items-center justify-between px-2 transition-all duration-300 shadow-md border border-yellow-300 ${
               loading || isWriting ? "opacity-50 cursor-not-allowed" : ""
-  }`}
+            }`}
           >
             {/* Drapeau FR */}
             <span className={`text-black text-lg transition-opacity duration-300 ${
@@ -168,6 +174,42 @@ export default function Home() {
             <span
               className={`absolute top-1 w-8 h-8 bg-black rounded-full shadow-lg transform transition-all duration-300 ${
                 language === "fr" ? "translate-x-0" : "translate-x-8"
+              }`}
+            ></span>
+          </button>
+
+          {/* 🔊 Sound Toggle Switch */}
+          <button
+            onClick={() => {
+              if (isSoundOn) {
+                ambianceRef.current?.pause();
+                quoteRef.current?.pause();
+                setIsSoundOn(false);
+              } else {
+                if (isWriting || loading) {
+                  quoteRef.current?.play();
+                } else {
+                  ambianceRef.current?.play();
+                }
+                setIsSoundOn(true);
+              }
+            }}
+            className="relative w-20 h-10 bg-yellow-300 rounded-full flex items-center justify-between px-2 transition-all duration-300 shadow-md border border-yellow-300"
+          >
+            {/* Sound ON */}
+            <span className="text-black text-lg">
+              🔊
+            </span>
+            
+            {/* Sound OFF */}
+            <span className="text-black text-lg">
+              🔇
+            </span>
+            
+            {/* Sliding indicator */}
+            <span
+              className={`absolute top-1 w-8 h-8 bg-black rounded-full shadow-lg transform transition-all duration-300 ${
+                isSoundOn ? "translate-x-0" : "translate-x-8"
               }`}
             ></span>
           </button>
@@ -223,7 +265,9 @@ export default function Home() {
                 quoteRef.current.pause();
                 quoteRef.current.currentTime = 0;
               }
-              ambianceRef.current?.play();
+              if (isSoundOn) {
+                ambianceRef.current?.play();
+              }
               setLoading(false);
             }}
             className="fixed bottom-10 left-1/2 -translate-x-1/2 bg-[#FFE81F] hover:bg-[#FFE81F] text-black font-bold px-5 py-3 rounded-lg shadow-lg transition-all duration-300 z-50 opacity-60 hover:opacity-90"
