@@ -229,7 +229,7 @@ export default function Home() {
             className="fixed bottom-10 left-1/2 -translate-x-1/2 bg-[#FFE81F] hover:bg-[#FFE81F] text-black font-bold px-5 py-3 rounded-lg shadow-lg transition-all duration-300 z-50 opacity-60 hover:opacity-90"
             style={{ transform: 'perspective(500px) rotateX(40deg)' }}
           >
-            {language === "fr" ? "Arrêter la citation" : "Stop the quote"}
+            {language === "fr" ? "La force est puissante en moi ⏏︎" : "The force is strong in me ⏏︎"}
           </button>
         )}
       </main>
