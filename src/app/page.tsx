@@ -226,9 +226,10 @@ export default function Home() {
               ambianceRef.current?.play();
               setLoading(false);
             }}
-            className="fixed bottom-10 right-10 bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-3 rounded-full shadow-lg transition-all duration-300 z-50"
+            className="fixed bottom-10 left-1/2 -translate-x-1/2 bg-[#FFE81F] hover:bg-[#FFE81F] text-black font-bold px-5 py-3 rounded-lg shadow-lg transition-all duration-300 z-50 opacity-60 hover:opacity-90"
+            style={{ transform: 'perspective(500px) rotateX(40deg)' }}
           >
-            ⏹️ Stop Quote
+            {language === "fr" ? "Arrêter la citation" : "Stop the quote"}
           </button>
         )}
       </main>
