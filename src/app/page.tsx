@@ -134,7 +134,10 @@ export default function Home() {
         <div className="absolute top-6 right-6">
           <button
             onClick={() => setLanguage(language === "fr" ? "en" : "fr")}
-            className="relative w-20 h-10 bg-yellow-300 rounded-full flex items-center justify-between px-2 transition-all duration-300 shadow-md border border-yellow-300"
+            disabled={loading || isWriting}
+            className={`relative w-20 h-10 bg-yellow-300 rounded-full flex items-center justify-between px-2 transition-all duration-300 shadow-md border border-yellow-300 ${
+              loading || isWriting ? "opacity-50 cursor-not-allowed" : ""
+  }`}
           >
             {/* Drapeau FR */}
             <span className={`text-black text-lg transition-opacity duration-300 ${
