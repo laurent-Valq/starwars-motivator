@@ -17,11 +17,13 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [isWriting, setIsWriting] = useState(false);
   const [showScroll, setShowScroll] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
   const [stars, setStars] = useState<any[]>([]);
   const [language, setLanguage] = useState<"fr" | "en">("fr");
   
   const ambianceRef = useRef<HTMLAudioElement | null>(null);
   const quoteRef = useRef<HTMLAudioElement | null>(null);
+  const timeoutRefs = useRef<ReturnType<typeof setTimeout>[]>([]);
 
   useEffect(() => {
     setStars(generateStars(200));
@@ -39,6 +41,9 @@ export default function Home() {
 
   const generateQuote = async () => {
     if (isWriting || loading) return;
+    // Clear old timeouts
+    timeoutRefs.current.forEach(t => clearTimeout(t));
+    timeoutRefs.current = [];
     setIsWriting(true);
     const startFront = performance.now();
     setLoading(true);
@@ -51,6 +56,8 @@ export default function Home() {
       quoteRef.current.play();
     }
     
+    setIsScrolling(true);
+
     try {
       const res = await fetch("/api/generate", {
         method: "POST",
@@ -63,17 +70,19 @@ export default function Home() {
       const data = await res.json();
       setQuote(data.quote);
       
-      setTimeout(() => {
+      const t1 = setTimeout(() => {
         setShowScroll(true);
       }, 5000);
 
-      setTimeout(() => {
+      const t2 = setTimeout(() => {
         setShowScroll(false);
+        setIsScrolling(false);
         quoteRef.current?.pause();
         ambianceRef.current?.play();
         setIsWriting(false);
         setLoading(false);
       }, 50000);
+      timeoutRefs.current = [t1, t2];
       
     } catch (error) {
       console.error("Erreur:", error);
@@ -82,17 +91,19 @@ export default function Home() {
         : "Unable to communicate with the Force..."
       );
       
-      setTimeout(() => {
+      const t1 = setTimeout(() => {
         setShowScroll(true);
       }, 5000);
 
-      setTimeout(() => {
+      const t2 = setTimeout(() => {
         setShowScroll(false);
+        setIsScrolling(false);
         quoteRef.current?.pause();
         ambianceRef.current?.play();
         setIsWriting(false);
         setLoading(false);
       }, 50000);
+      timeoutRefs.current = [t1, t2];
     } finally {
       setLoading(false);
     }
@@ -197,6 +208,28 @@ export default function Home() {
               </p>
             </div>
           </div>
+        )}
+
+        {isScrolling && (
+          <button
+            onClick={() => {
+              timeoutRefs.current.forEach(t => clearTimeout(t));
+              timeoutRefs.current = [];
+              setShowScroll(false);
+              setIsScrolling(false);
+              setIsWriting(false);
+              setQuote("");
+              if (quoteRef.current) {
+                quoteRef.current.pause();
+                quoteRef.current.currentTime = 0;
+              }
+              ambianceRef.current?.play();
+              setLoading(false);
+            }}
+            className="fixed bottom-10 right-10 bg-red-600 hover:bg-red-700 text-white font-bold px-5 py-3 rounded-full shadow-lg transition-all duration-300 z-50"
+          >
+            ⏹️ Stop Quote
+          </button>
         )}
       </main>
     </>
