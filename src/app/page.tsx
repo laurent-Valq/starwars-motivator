@@ -15,6 +15,7 @@ const generateStars = (count: number) => {
 export default function Home() {
   const [quote, setQuote] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isWriting, setIsWriting] = useState(false);
   const [showScroll, setShowScroll] = useState(false);
   const [stars, setStars] = useState<any[]>([]);
   const [language, setLanguage] = useState<"fr" | "en">("fr");
@@ -37,6 +38,8 @@ export default function Home() {
   }, []);
 
   const generateQuote = async () => {
+    if (isWriting || loading) return;
+    setIsWriting(true);
     const startFront = performance.now();
     setLoading(true);
     setShowScroll(false);
@@ -68,6 +71,8 @@ export default function Home() {
         setShowScroll(false);
         quoteRef.current?.pause();
         ambianceRef.current?.play();
+        setIsWriting(false);
+        setLoading(false);
       }, 50000);
       
     } catch (error) {
@@ -85,6 +90,8 @@ export default function Home() {
         setShowScroll(false);
         quoteRef.current?.pause();
         ambianceRef.current?.play();
+        setIsWriting(false);
+        setLoading(false);
       }, 50000);
     } finally {
       setLoading(false);
@@ -156,20 +163,25 @@ export default function Home() {
     
         <button
           onClick={generateQuote}
-          disabled={loading}
-          className="text-black font-bold px-6 py-3 rounded-lg shadow-md hover:bg-yellow-300 hover:scale-105 transition-transform duration-300 disabled:opacity-50 disabled:cursor-not-allowed relative z-20"
-          style={{ transform: 'perspective(500px) rotateX(40deg)', backgroundColor: '#FFE81F' }}
+          disabled={loading || isWriting}
+          className={`
+            text-black font-bold px-6 py-3 rounded-lg shadow-md relative z-20
+            transition-transform duration-300
+            ${loading || isWriting
+              ? "opacity-18 cursor-not-allowed bg-[#FFE81F]"
+              : "hover:bg-yellow-300 hover:scale-105 bg-[#FFE81F]"}
+          `}
+          style={{ transform: 'perspective(500px) rotateX(40deg)' }}
         >
-          {loading ? (
+          {loading || isWriting ? (
             <span className="flex items-center gap-2">
-              <span className="animate-spin">⚡</span>
-              {language === "fr" ? "Connexion à la Force..." : "Connecting to the Force..."}
-              {/*Connexion à la Force... */}
+              <span className="animate-pulse"></span>
+              {language === "fr"
+                ? "Méditer tu dois, jeune padawan...écoute la Force..."
+                : "Meditate you must, young padawan...listen to the Force..."}
             </span>
           ) : (
-            language === "fr" 
-              ? "Générer une citation" 
-              : "Generate a quote"
+            language === "fr" ? "Générer une citation" : "Generate a quote"
           )}
         </button>
     
