@@ -39,6 +39,7 @@ body {
   color: #FFE81F;
   text-align: center;
   overflow-x: hidden;
+  flex-direction: column;
 }
 
 /* ⬇️ Classe pour le titre uniquement */
@@ -156,4 +157,26 @@ body {
 .star-large {
   width: 3px;
   height: 3px;
+}
+
+.app-shell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: purple;
+}
+
+.app-shell main {
+  flex: 1;
+}
+
+.page-center {
+  display: flex;
+  flex-direction: column;  /* keep stacked items */
+  align-items: center;     /* horizontal center */
+  justify-content: center; /* vertical center */
+  gap: 1.5rem;             /* adds spacing between components */
+  padding: 2rem;
+  min-height: 100%;
 }

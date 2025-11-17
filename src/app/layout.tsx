@@ -28,12 +28,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ConditionalHeader />
-        <Navbar />
-        {children}
-        <Footer />
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <div className="app-shell">
+            <ConditionalHeader />
+            <Navbar />
+            <main className="flex-grow page-center">{children}</main>
+            <Footer />       
+          </div>
       </body>
     </html>
   );
