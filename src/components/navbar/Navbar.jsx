@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Links from "./links/Links";
+import styles from "./navbar.module.css";
 
 const hiddenRoutes = ["/motivator"];
 
@@ -13,10 +14,10 @@ const Navbar = () => {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <div>Logo</div>
       <div>
-        <Links/>
+        <Links/> 
       </div>
     </div>
   );
