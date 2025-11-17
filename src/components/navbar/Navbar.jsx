@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import Link from "next/link";
+import Links from "./links/Links";
 
 const hiddenRoutes = ["/motivator"];
 
@@ -16,9 +16,7 @@ const Navbar = () => {
     <div>
       <div>Logo</div>
       <div>
-        <Link href="/">Homepage</Link>
-        <Link href="/login">Loginpage</Link>
-        <Link href="/register">Registerpage</Link>
+        <Links/>
       </div>
     </div>
   );
