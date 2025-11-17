@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const hiddenRoutes = ["/motivator"];
 
@@ -13,7 +14,12 @@ const Navbar = () => {
 
   return (
     <div>
-      <h1>Navbar</h1>
+      <div>Logo</div>
+      <div>
+        <Link href="/">Homepage</Link>
+        <Link href="/login">Loginpage</Link>
+        <Link href="/register">Registerpage</Link>
+      </div>
     </div>
   );
 };
