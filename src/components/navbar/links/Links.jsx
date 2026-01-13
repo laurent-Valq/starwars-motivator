@@ -22,9 +22,9 @@ const Links = () => {
     ]
     return (
         <div className={styles.links}>
-            {links.map((link=>(
+            {links.map((link) => (
                 <NavLink item={link} key={link.title}/>
-            )))}
+            ))}
         </div>
     )
 }
