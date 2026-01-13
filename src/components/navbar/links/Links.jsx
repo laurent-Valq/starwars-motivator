@@ -12,6 +12,10 @@ const Links = () => {
             path: "/",
         },
         { 
+            title: "Motivator", 
+            path: "/motivator",
+        },
+        { 
             title: "Loginpage", 
             path: "/login",
         },
