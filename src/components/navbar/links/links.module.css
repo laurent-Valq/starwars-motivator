@@ -3,3 +3,10 @@
     align-items: center;
     gap: 10px;
 }
+
+@media (max-width: 768px) {
+  .links {
+    flex-direction: column;
+    gap: 5px;
+  }
+}

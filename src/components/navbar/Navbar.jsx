@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.logo}>Logo</div>
+      <div className={styles.logo}>⭐ STAR WARS LOGO</div>
       <div>
         <Links/> 
       </div>
