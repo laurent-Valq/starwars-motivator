@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import styles from "./links.module.css"
+import NavLink from './navLink/navLink'
 
 const Links = () => {
 
@@ -19,9 +21,9 @@ const Links = () => {
         },
     ]
     return (
-        <div>
+        <div className={styles.links}>
             {links.map((link) => (
-                <Link href={link.path} key={link.title}>{link.title}</Link>
+                <NavLink item={link} key={link.title}/>
             ))}
         </div>
     )
