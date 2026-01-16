@@ -39,7 +39,7 @@ body {
   color: #FFE81F;
   text-align: center;
   overflow-x: hidden;
-  flex-direction: column;
+  /*flex-direction: column;*/  /* ca rogne le theme Star Wars */
 }
 
 /* ⬇️ Classe pour le titre uniquement */
