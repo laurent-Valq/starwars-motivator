@@ -12,7 +12,10 @@ const handler = NextAuth({
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
+        if (
+          typeof credentials?.email !== "string" ||
+          typeof credentials?.password !== "string"
+        ) {
           return null
         }
 
