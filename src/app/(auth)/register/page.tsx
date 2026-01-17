@@ -40,7 +40,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black text-[#FFE81F]">
+    <div className="min-h-screen flex items-center justify-center text-[#FFE81F]">
       <div className="w-full max-w-md p-8 space-y-6 bg-[#1e1e56] rounded-lg shadow-xl border-2 border-[#FFE81F]">
         <h1 className="text-4xl font-bold text-center star-wars-font">
           REGISTER
