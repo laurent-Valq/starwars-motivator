@@ -39,7 +39,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center text-[#FFE81F]">
-      <div className="w-full max-w-md p-8 space-y-6 bg-[#1e1e56] rounded-lg shadow-xl border-2 border-[#FFE81F]">
+      <div className="w-full max-w-md p-8 space-y-6 bg-cyan-500/20 backdrop-blur-sm rounded-lg shadow-2xl border-2 border-cyan-400" style={{ boxShadow: '0 0 40px rgba(34, 211, 238, 0.6)' }}>
         <h1 className="text-4xl font-bold text-center">
           LOGIN
         </h1>
