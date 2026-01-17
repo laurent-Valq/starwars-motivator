@@ -164,7 +164,9 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: purple;
+  background-color: transparent;
+  position: relative;
+  z-index: 1;
 }
 
 .app-shell main {
