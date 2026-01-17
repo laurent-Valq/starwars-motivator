@@ -38,7 +38,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center text-[#FFE81F]">
+    <div className="min-h-screen flex items-center justify-center text-[#FACC15]">
       <div className="w-full max-w-md p-8 space-y-6 bg-cyan-500/20 backdrop-blur-sm rounded-lg shadow-2xl border-2 border-cyan-400" style={{ boxShadow: '0 0 40px rgba(34, 211, 238, 0.6)' }}>
         <h1 className="text-4xl font-bold text-center">
           LOGIN
@@ -55,7 +55,7 @@ export default function LoginPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-4 py-2 bg-black text-[#FFE81F] border-2 border-[#FFE81F] rounded focus:outline-none focus:ring-2 focus:ring-[#FFE81F]"
+              className="w-full px-4 py-2 bg-black text-[#FACC15] border-2 border-[#FACC15] rounded focus:outline-none focus:ring-2 focus:ring-[#FACC15]"
               placeholder="your@email.com"
             />
           </div>
@@ -70,7 +70,7 @@ export default function LoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full px-4 py-2 bg-black text-[#FFE81F] border-2 border-[#FFE81F] rounded focus:outline-none focus:ring-2 focus:ring-[#FFE81F]"
+              className="w-full px-4 py-2 bg-black text-[#FACC15] border-2 border-[#FACC15] rounded focus:outline-none focus:ring-2 focus:ring-[#FACC15]"
               placeholder="••••••••"
             />
           </div>
@@ -82,7 +82,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-[#FFE81F] text-black font-bold rounded hover:bg-yellow-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed border-2 border-black"
+            className="w-full py-3 bg-[#FACC15] text-black font-bold rounded hover:bg-yellow-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed border-2 border-black"
           >
             {loading ? "Logging in..." : "Login"}
           </button>
@@ -90,7 +90,7 @@ export default function LoginPage() {
 
         <p className="text-center text-sm">
           Don't have an account?{" "}
-          <Link href="/register" className="text-[#FFE81F] hover:underline font-bold">
+          <Link href="/register" className="text-[#FACC15] hover:underline font-bold">
             Register here
           </Link>
         </p>
