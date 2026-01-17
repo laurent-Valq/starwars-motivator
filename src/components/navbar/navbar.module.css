@@ -11,4 +11,6 @@
 .logo{
   font-size: 30px;
   font-weight: bold;
+  color: black; 
+  text-shadow: 0 0 4px #FFE81F; /* ← Glow jaune autour */
 }

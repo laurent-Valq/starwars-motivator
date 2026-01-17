@@ -15,9 +15,15 @@ const Navbar = () => {
 
   return (
     <div className={`${styles.container} hologram-card`}>
-      <div className={styles.logo}>⭐ STAR WARS LOGO</div>
+      <div className={styles.logo}>
+        <span className="star-wars-font">STAR WARS</span>
+        <br />
+        <span style={{ fontFamily: "Impact, Arial Black, sans-serif" }}>
+          MOTIVATOR
+        </span>
+      </div>
       <div>
-        <Links/> 
+        <Links />
       </div>
     </div>
   );
