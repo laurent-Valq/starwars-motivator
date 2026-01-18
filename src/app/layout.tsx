@@ -5,6 +5,7 @@ import ConditionalHeader from "@/components/ConditionalHeader";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import Starfield from "@/components/Starfield";
+import { SessionProvider } from "next-auth/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,13 +31,15 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <Starfield />
-          <div className="app-shell">
-            <ConditionalHeader />
-            <Navbar />
-            <main className="flex-grow page-center">{children}</main>
-            <Footer />       
-          </div>
+          <SessionProvider>
+            <Starfield />
+            <div className="app-shell">
+              <ConditionalHeader />
+              <Navbar />
+              <main className="flex-grow page-center">{children}</main>
+              <Footer />       
+            </div>
+          </SessionProvider>
       </body>
     </html>
   );

@@ -1,29 +1,20 @@
 "use client";
 
-import Link from "next/link";
 import styles from "./links.module.css"
 import NavLink from './navLink/navLink'
 
-const Links = () => {
-
+const Links = ({ isAdmin }) => {
     const links = [
-        { 
-            title: "Homepage", 
-            path: "/",
-        },
-        { 
-            title: "Motivator", 
-            path: "/motivator",
-        },
-        { 
-            title: "Loginpage", 
-            path: "/login",
-        },
-        { 
-            title: "Registerpage", 
-            path: "/register",
-        },
+        { title: "Homepage", path: "/" },
+        { title: "Motivator", path: "/motivator" },
+        { title: "Loginpage", path: "/login" },
+        { title: "Registerpage", path: "/register" },
     ]
+
+    if (isAdmin) {
+        links.push({ title: "Admin", path: "/admin" })
+    }
+
     return (
         <div className={styles.links}>
             {links.map((link) => (
