@@ -11,6 +11,6 @@ export default function ConditionalHeader() {
     return null;
   }
   
-  return <h1>This is my Star Wars Motivator App</h1>;
+  return <h1 className="text-[#FACC15]">Welcome to Star Wars Motivator</h1>;
 }
 
