@@ -8,7 +8,7 @@ const Links = ({ isAdmin, isConnected }) => {
     const links = []
 
     // Liens toujours visibles
-    links.push({ title: "Homepage", path: "/" })
+    links.push({ title: "Home", path: "/" })
     links.push({ title: "Motivator", path: "/motivator" })
 
     if (isConnected) {
@@ -18,8 +18,8 @@ const Links = ({ isAdmin, isConnected }) => {
         }
     } else {
         // Si déconnecté : afficher Login + Register
-        links.push({ title: "Loginpage", path: "/login" })
-        links.push({ title: "Registerpage", path: "/register" })
+        links.push({ title: "Login", path: "/login" })
+        links.push({ title: "Register", path: "/register" })
     }
 
     return (

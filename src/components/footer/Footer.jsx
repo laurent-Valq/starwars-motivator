@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import styles from "./footer.module.css";
 
 const hiddenRoutes = ["/motivator"];
 
@@ -12,8 +13,8 @@ const Footer = () => {
   }
 
   return (
-    <div>
-      <h1>Footer</h1>
+    <div className={`${styles.container} hologram-card`}>
+      <h1 className={styles.title}>The Jedi Meditation</h1>
     </div>
   );
 };
