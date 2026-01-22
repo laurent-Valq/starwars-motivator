@@ -8,7 +8,7 @@ const Links = ({ isAdmin, isConnected }) => {
     const links = []
 
     // Liens toujours visibles
-    links.push({ title: "Homepage", path: "/" })
+    links.push({ title: "Home", path: "/" })
     links.push({ title: "Motivator", path: "/motivator" })
 
     if (isConnected) {
