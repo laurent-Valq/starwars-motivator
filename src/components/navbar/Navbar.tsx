@@ -8,7 +8,11 @@ export default async function Navbar() {
   const session = await auth()
   
   let isAdmin = false
+  let isConnected = false   
+
+
   if (session?.user?.email) {
+    isConnected = true
     const user = await prisma.user.findUnique({
       where: { email: session.user.email },
       select: { role: true }
@@ -17,5 +21,5 @@ export default async function Navbar() {
     isAdmin = user?.role === "admin"
   }
 
-  return <NavbarClient isAdmin={isAdmin} hiddenRoutes={hiddenRoutes} />
+  return <NavbarClient isAdmin={isAdmin} isConnected={isConnected} hiddenRoutes={hiddenRoutes} />
 }

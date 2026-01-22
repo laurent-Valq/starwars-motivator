@@ -6,9 +6,11 @@ import styles from "./navbar.module.css"
 
 export default function NavbarClient({ 
   isAdmin, 
+  isConnected,
   hiddenRoutes 
 }: { 
   isAdmin: boolean
+  isConnected: boolean
   hiddenRoutes: string[]
 }) {
   const pathname = usePathname()
@@ -25,7 +27,7 @@ export default function NavbarClient({
         <span style={{ fontFamily: 'Impact, Arial Black, sans-serif' }}>MOTIVATOR</span>
       </div>
       <div>
-        <Links isAdmin={isAdmin} /> 
+        <Links isAdmin={isAdmin} isConnected={isConnected} /> 
       </div>
     </div>
   )

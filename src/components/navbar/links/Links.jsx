@@ -2,17 +2,24 @@
 
 import styles from "./links.module.css"
 import NavLink from './navLink/navLink'
+import LogoutButton from '../LogoutButton'
 
-const Links = ({ isAdmin }) => {
-    const links = [
-        { title: "Homepage", path: "/" },
-        { title: "Motivator", path: "/motivator" },
-        { title: "Loginpage", path: "/login" },
-        { title: "Registerpage", path: "/register" },
-    ]
+const Links = ({ isAdmin, isConnected }) => {
+    const links = []
 
-    if (isAdmin) {
-        links.push({ title: "Admin", path: "/admin" })
+    // Liens toujours visibles
+    links.push({ title: "Homepage", path: "/" })
+    links.push({ title: "Motivator", path: "/motivator" })
+
+    if (isConnected) {
+        // Si connecté : afficher Admin (si admin) + Logout
+        if (isAdmin) {
+            links.push({ title: "Admin", path: "/admin" })
+        }
+    } else {
+        // Si déconnecté : afficher Login + Register
+        links.push({ title: "Loginpage", path: "/login" })
+        links.push({ title: "Registerpage", path: "/register" })
     }
 
     return (
@@ -20,6 +27,7 @@ const Links = ({ isAdmin }) => {
             {links.map((link) => (
                 <NavLink item={link} key={link.title}/>
             ))}
+            {isConnected && <LogoutButton />}
         </div>
     )
 }
