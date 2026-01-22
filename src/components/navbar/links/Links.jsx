@@ -18,8 +18,8 @@ const Links = ({ isAdmin, isConnected }) => {
         }
     } else {
         // Si déconnecté : afficher Login + Register
-        links.push({ title: "Loginpage", path: "/login" })
-        links.push({ title: "Registerpage", path: "/register" })
+        links.push({ title: "Login", path: "/login" })
+        links.push({ title: "Register", path: "/register" })
     }
 
     return (
