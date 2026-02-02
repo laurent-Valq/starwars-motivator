@@ -1,19 +1,22 @@
-.container{
-  min-width: 100px;
-  padding: 10px;
-  border-radius: 20px;
-  font-weight: 500;
-  text-align: center;
-  transition: all 0.3s ease;
+.container {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: rgba(25, 97, 110, 0.3);
+  backdrop-filter: blur(4px);
+  color:#22d3ee;  /* ← Cette ligne : cyan comme Create Account */
+  border: 2px solid rgb(34, 211, 238);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+  transition: all 0.3s;
+}
+
+.active {
+  background-color: rgba(21, 198, 230, 0.4);  /* ← Plus opaque */
+  box-shadow: 0 0 60px rgba(34, 211, 238, 1);  /* ← Glow plus intense et opacité à 100% */
 }
 
 .container:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
-}
-
-.active{
-    background-color: rgba(255, 255, 255, 0.3);;
-    color: #FACC15;
-    border: 2px solid #FACC15;
+  background-color: rgba(6, 182, 212, 0.3);
+  box-shadow: 0 0 30px rgba(34, 211, 238, 0.6);
 }
