@@ -28,6 +28,7 @@ export default async function AdminPage() {
       email: true,
       name: true,
       role: true,
+      isActive: true,
       createdAt: true,
       _count: {
         select: { likedQuotes: true }
@@ -65,6 +66,7 @@ export default async function AdminPage() {
                   <th className="text-left p-2">Email</th>
                   <th className="text-left p-2">Name</th>
                   <th className="text-left p-2">Role</th>
+                  <th className="text-left p-2">Status</th> 
                   <th className="text-left p-2">Liked Quotes</th>
                   <th className="text-left p-2">Created</th>
                 </tr>
@@ -77,6 +79,11 @@ export default async function AdminPage() {
                     <td className="p-2">
                       <span className={user.role === 'admin' ? 'text-red-400 font-bold' : ''}>
                         {user.role}
+                      </span>
+                    </td>
+                    <td className="p-2">
+                      <span className={user.isActive ? 'text-green-400' : 'text-red-400 font-bold'}>
+                        {user.isActive ? 'Active' : 'Deactivated'}
                       </span>
                     </td>
                     <td className="p-2">{user._count.likedQuotes}</td>
