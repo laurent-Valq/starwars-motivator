@@ -30,7 +30,7 @@ export default async function HomePage() {
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-black" style={{ textShadow: '0 0 4px #FFE81F' }}>
-            Meditate you must...
+            Can you hear the Force?
           </p>
 
           {/* Primary CTA */}

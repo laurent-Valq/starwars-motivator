@@ -39,6 +39,22 @@ export default function Home() {
     quoteRef.current = new Audio('/starwars-theme.mp3');
     quoteRef.current.volume = 0.5;
   }, []);
+  
+  // Cleanup: arrêter toutes les musiques quand on quitte la page
+  useEffect(() => {
+    return () => {
+      if (ambianceRef.current) {
+        ambianceRef.current.pause();
+        ambianceRef.current.currentTime = 0;
+      }
+      if (quoteRef.current) {
+        quoteRef.current.pause();
+        quoteRef.current.currentTime = 0;
+      }
+      // Nettoyer les timeouts
+      timeoutRefs.current.forEach(t => clearTimeout(t));
+    }
+  }, []);
 
   const generateQuote = async () => {
     if (isWriting || loading) return;
