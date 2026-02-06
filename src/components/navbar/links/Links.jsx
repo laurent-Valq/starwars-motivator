@@ -13,6 +13,7 @@ const Links = ({ isAdmin, isConnected }) => {
 
     if (isConnected) {
         // Si connecté : afficher Admin (si admin) + Logout
+        links.push({ title: "Settings", path: "/settings" })
         if (isAdmin) {
             links.push({ title: "Admin", path: "/admin" })
         }

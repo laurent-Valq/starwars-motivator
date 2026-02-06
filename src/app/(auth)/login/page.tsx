@@ -25,11 +25,28 @@ export default function LoginPage() {
       })
 
       if (result?.error) {
-        setError("Invalid email or password")
+        // Vérifier si le compte est désactivé
+        const checkDeactivated = await fetch("/api/auth/check-active", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: email })
+        })
+        
+        const data = await checkDeactivated.json()
+        
+        if (!data.isActive) {
+          setError(
+            "🇬🇧 Your account has been deactivated. Contact an admin: admin@starwars-motivator.com\n\n" +
+            "🇫🇷 Votre compte a été désactivé. Contactez un admin : admin@starwars-motivator.com" 
+          )
+        } else {
+          setError("Email ou mot de passe invalide | Invalid email or password")
+        }
       } else {
         router.push("/")
         router.refresh()
       }
+
     } catch (error) {
       setError("Something went wrong")
     } finally {
@@ -55,7 +72,11 @@ export default function LoginPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-4 py-2 bg-black text-[#FACC15] border-2 border-[#FACC15] rounded focus:outline-none focus:ring-2 focus:ring-[#FACC15]"
+              style={{
+                WebkitBoxShadow: '0 0 0 1000px black inset',
+                WebkitTextFillColor: '#FACC15'
+              }}
+              className="w-full px-4 py-2 bg-black text-[#FACC15] border-2 border-[#FACC15] rounded focus:outline-none focus:ring-2 focus:ring-[#FACC15] [&:-webkit-autofill]:!bg-black [&:-webkit-autofill]:!text-[#FACC15] [&:-webkit-autofill]:shadow-[inset_0_0_0px_1000px_black]"
               placeholder="your@email.com"
             />
           </div>
@@ -70,7 +91,11 @@ export default function LoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full px-4 py-2 bg-black text-[#FACC15] border-2 border-[#FACC15] rounded focus:outline-none focus:ring-2 focus:ring-[#FACC15]"
+              style={{
+                WebkitBoxShadow: '0 0 0 1000px black inset',
+                WebkitTextFillColor: '#FACC15'
+              }}
+              className="w-full px-4 py-2 bg-black text-[#FACC15] border-2 border-[#FACC15] rounded focus:outline-none focus:ring-2 focus:ring-[#FACC15] [&:-webkit-autofill]:!bg-black [&:-webkit-autofill]:!text-[#FACC15] [&:-webkit-autofill]:shadow-[inset_0_0_0px_1000px_black]"
               placeholder="••••••••"
             />
           </div>

@@ -27,6 +27,11 @@ export const { handlers, auth } = NextAuth({
           return null
         }
 
+        // ← AJOUTE ce check
+        if (!user.isActive) {
+          return null  // Bloque la connexion si le compte est désactivé
+        }        
+
         const isPasswordValid = await bcrypt.compare(
           credentials.password,
           user.password

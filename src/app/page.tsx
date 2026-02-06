@@ -88,7 +88,7 @@ export default async function HomePage() {
 
         {/* Secondary CTA */}
         <div className="pt-8 space-y-4">
-          <p className="text-lg text-gray-300">
+          <p className="text-lg text-[#FFE81F]">
             Want to save your favorite quotes?
           </p>
           <Link 
