@@ -1,15 +1,25 @@
 import { NextResponse } from "next/server"
 import { prisma } from "@/lib/prisma"
 import bcrypt from "bcrypt"
+import { validateEmail, validatePassword } from "@/lib/validation"
 
 export async function POST(request: Request) {
   try {
     const { email, password, name } = await request.json()
 
-    // Validation basique
-    if (!email || !password) {
+    
+    const emailValidation = validateEmail(email)
+    if (!emailValidation.valid) {
       return NextResponse.json(
-        { error: "Email and password are required" },
+        { error: emailValidation.error },
+        { status: 400 }
+      )
+    }
+
+    const passwordValidation = validatePassword(password)
+    if (!passwordValidation.valid) {
+      return NextResponse.json(
+        { error: passwordValidation.error },
         { status: 400 }
       )
     }
