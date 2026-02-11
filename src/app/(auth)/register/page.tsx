@@ -71,7 +71,10 @@ export default function RegisterPage() {
               id="name"
               type="text"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}style={{
+                WebkitBoxShadow: '0 0 0 1000px black inset',
+                WebkitTextFillColor: '#FFE81F'
+              }}
               className="w-full px-4 py-2 bg-black text-[#FFE81F] border-2 border-[#FFE81F] rounded focus:outline-none focus:ring-2 focus:ring-[#FFE81F]"
               placeholder="Your name"
             />
@@ -87,6 +90,10 @@ export default function RegisterPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              style={{
+                WebkitBoxShadow: '0 0 0 1000px black inset',
+                WebkitTextFillColor: '#FFE81F'
+              }}
               className="w-full px-4 py-2 bg-black text-[#FFE81F] border-2 border-[#FFE81F] rounded focus:outline-none focus:ring-2 focus:ring-[#FFE81F]"
               placeholder="your@email.com"
             />
@@ -103,6 +110,10 @@ export default function RegisterPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                style={{
+                  WebkitBoxShadow: '0 0 0 1000px black inset',
+                  WebkitTextFillColor: '#FFE81F'
+                }}
                 className="w-full px-4 py-2 bg-black text-[#FFE81F] border-2 border-[#FFE81F] rounded focus:outline-none focus:ring-2 focus:ring-[#FFE81F]"
                 placeholder="••••••••"
               />
