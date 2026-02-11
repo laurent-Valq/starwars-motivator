@@ -204,7 +204,7 @@ export default function Home() {
               } else {
                 if (isWriting || loading) {
                   quoteRef.current?.play();
-                } else {
+                } else if (quote) {  // ← Vérifie qu'il y a une quote générée
                   ambianceRef.current?.play();
                 }
                 setIsSoundOn(true);
