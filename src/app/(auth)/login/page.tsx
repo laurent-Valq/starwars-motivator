@@ -37,8 +37,10 @@ export default function LoginPage() {
         
         if (!data.isActive) {
           setError(
-            "🇬🇧 Your account has been deactivated. Contact an admin: admin@starwars-motivator.com\n\n" +
-            "🇫🇷 Votre compte a été désactivé. Contactez un admin : admin@starwars-motivator.com" 
+            "🇬🇧 Your account has been deactivated.\n" +
+            "To reactivate it, send an email to admin@starwars-motivator.com with subject: REACTIVATE\n\n" +
+            "🇫🇷 Votre compte a été désactivé.\n" +
+            "Pour le réactiver, envoyez un email à admin@starwars-motivator.com avec l'objet : REACTIVATE"
           )
         } else {
           setError("Email ou mot de passe invalide | Invalid email or password")
