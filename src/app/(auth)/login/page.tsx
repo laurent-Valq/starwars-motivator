@@ -107,6 +107,11 @@ export default function LoginPage() {
                 {showPassword ? "🌕" : "🌑"}
               </button>
             </div>
+            <div className="text-right mt-2">
+              <Link href="/forgot-password" className="text-xs text-[#FACC15] hover:underline">
+                Forgot password?
+              </Link>
+            </div>
           </div>
 
           {error && (
