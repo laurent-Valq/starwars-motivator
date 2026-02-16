@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
+import { validateEmail, validatePassword } from "@/lib/validation"
 
 export default function RegisterPage() {
   const router = useRouter()
@@ -11,11 +12,26 @@ export default function RegisterPage() {
   const [name, setName] = useState("")
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError("")
     setLoading(true)
+
+    const emailValidation = validateEmail(email)
+  if (!emailValidation.valid) {
+    setError(emailValidation.error!)
+    setLoading(false)
+    return
+  }
+
+  const passwordValidation = validatePassword(password)
+  if (!passwordValidation.valid) {
+    setError(passwordValidation.error!)
+    setLoading(false)
+    return
+  }
 
     try {
       const response = await fetch("/api/auth/register", {
@@ -55,7 +71,10 @@ export default function RegisterPage() {
               id="name"
               type="text"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}style={{
+                WebkitBoxShadow: '0 0 0 1000px black inset',
+                WebkitTextFillColor: '#FFE81F'
+              }}
               className="w-full px-4 py-2 bg-black text-[#FFE81F] border-2 border-[#FFE81F] rounded focus:outline-none focus:ring-2 focus:ring-[#FFE81F]"
               placeholder="Your name"
             />
@@ -71,6 +90,10 @@ export default function RegisterPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              style={{
+                WebkitBoxShadow: '0 0 0 1000px black inset',
+                WebkitTextFillColor: '#FFE81F'
+              }}
               className="w-full px-4 py-2 bg-black text-[#FFE81F] border-2 border-[#FFE81F] rounded focus:outline-none focus:ring-2 focus:ring-[#FFE81F]"
               placeholder="your@email.com"
             />
@@ -80,17 +103,32 @@ export default function RegisterPage() {
             <label htmlFor="password" className="block text-sm font-medium mb-2">
               Password
             </label>
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              minLength={6}
-              className="w-full px-4 py-2 bg-black text-[#FFE81F] border-2 border-[#FFE81F] rounded focus:outline-none focus:ring-2 focus:ring-[#FFE81F]"
-              placeholder="••••••••"
-            />
-            <p className="text-xs text-gray-400 mt-1">Minimum 6 characters</p>
+            <div className="relative">
+              <input
+                id="password"
+                type={showPassword ? "text" : "password"}  
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                style={{
+                  WebkitBoxShadow: '0 0 0 1000px black inset',
+                  WebkitTextFillColor: '#FFE81F'
+                }}
+                className="w-full px-4 py-2 bg-black text-[#FFE81F] border-2 border-[#FFE81F] rounded focus:outline-none focus:ring-2 focus:ring-[#FFE81F]"
+                placeholder="••••••••"
+              />
+              {/* ← bouton toggle */}
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#FFE81F] hover:text-yellow-300"
+              >
+                {showPassword ? "🌕" : "🌑"} 
+              </button>
+            </div>
+            <p className="text-xs text-gray-400 mt-1">
+              Minimum 8 caractères, 1 majuscule, 1 minuscule, 1 chiffre | Min 8 chars, 1 uppercase, 1 lowercase, 1 number, 1 special char
+            </p>
           </div>
 
           {error && (

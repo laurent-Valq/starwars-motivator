@@ -11,6 +11,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -36,8 +37,10 @@ export default function LoginPage() {
         
         if (!data.isActive) {
           setError(
-            "🇬🇧 Your account has been deactivated. Contact an admin: admin@starwars-motivator.com\n\n" +
-            "🇫🇷 Votre compte a été désactivé. Contactez un admin : admin@starwars-motivator.com" 
+            "🇬🇧 Your account has been deactivated.\n" +
+            "To reactivate it, send an email to admin@starwars-motivator.com with subject: REACTIVATE\n\n" +
+            "🇫🇷 Votre compte a été désactivé.\n" +
+            "Pour le réactiver, envoyez un email à admin@starwars-motivator.com avec l'objet : REACTIVATE"
           )
         } else {
           setError("Email ou mot de passe invalide | Invalid email or password")
@@ -85,19 +88,30 @@ export default function LoginPage() {
             <label htmlFor="password" className="block text-sm font-medium mb-2">
               Password
             </label>
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              style={{
-                WebkitBoxShadow: '0 0 0 1000px black inset',
-                WebkitTextFillColor: '#FACC15'
-              }}
-              className="w-full px-4 py-2 bg-black text-[#FACC15] border-2 border-[#FACC15] rounded focus:outline-none focus:ring-2 focus:ring-[#FACC15] [&:-webkit-autofill]:!bg-black [&:-webkit-autofill]:!text-[#FACC15] [&:-webkit-autofill]:shadow-[inset_0_0_0px_1000px_black]"
-              placeholder="••••••••"
-            />
+            <div className="relative">
+              <input
+                id="password"
+                type={showPassword ? "text" : "password"}  
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="w-full px-4 py-2 bg-black text-[#FFE81F] border-2 border-[#FFE81F] rounded focus:outline-none focus:ring-2 focus:ring-[#FFE81F]"
+                placeholder="••••••••"
+              />
+              {/* ← bouton toggle */}
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#FFE81F] hover:text-yellow-300"
+              >
+                {showPassword ? "🌕" : "🌑"}
+              </button>
+            </div>
+            <div className="text-right mt-2">
+              <Link href="/forgot-password" className="text-xs text-[#FACC15] hover:underline">
+                Forgot password?
+              </Link>
+            </div>
           </div>
 
           {error && (

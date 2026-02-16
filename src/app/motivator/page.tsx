@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 
 const generateStars = (count: number) => {
   return Array.from({ length: count }, (_, i) => ({
@@ -162,6 +163,17 @@ export default function Home() {
           motivator
         </h1>
 
+        {/* Home Button - Top Left */}
+        <div className="absolute top-6 left-6">
+          <Link 
+            href="/"
+            className="px-6 py-3 bg-cyan-500/20 backdrop-blur-sm text-cyan-400 font-semibold rounded-lg hover:bg-cyan-500/30 transition-colors border-2 border-cyan-400"
+            style={{ boxShadow: '0 0 20px rgba(34, 211, 238, 0.4)' }}
+          >
+            ← Home
+          </Link>
+        </div>
+
         {/* Language and Sound Toggle Switches - Top Right */}
         <div className="absolute top-6 right-6 flex flex-col gap-4">
           {/* 🌍 Language Toggle Switch */}
@@ -204,7 +216,7 @@ export default function Home() {
               } else {
                 if (isWriting || loading) {
                   quoteRef.current?.play();
-                } else {
+                } else if (quote) {  // ← Vérifie qu'il y a une quote générée
                   ambianceRef.current?.play();
                 }
                 setIsSoundOn(true);
