@@ -22,10 +22,14 @@ export default function Home() {
   const [isSoundOn, setIsSoundOn] = useState(true);
   const [stars, setStars] = useState<any[]>([]);
   const [language, setLanguage] = useState<"fr" | "en">("fr");
+  const [isLiked, setIsLiked] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   
   const ambianceRef = useRef<HTMLAudioElement | null>(null);
   const quoteRef = useRef<HTMLAudioElement | null>(null);
   const timeoutRefs = useRef<ReturnType<typeof setTimeout>[]>([]);
+
+  
 
   useEffect(() => {
     setStars(generateStars(200));
