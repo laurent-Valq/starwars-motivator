@@ -24,6 +24,8 @@ export default function Home() {
   const [language, setLanguage] = useState<"fr" | "en">("fr");
   const [isLiked, setIsLiked] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isAdmin, setIsAdmin] = useState(false)
+
   
   const ambianceRef = useRef<HTMLAudioElement | null>(null);
   const quoteRef = useRef<HTMLAudioElement | null>(null);
@@ -61,8 +63,42 @@ export default function Home() {
     }
   }, []);
 
+  useEffect(() => {
+    const checkSession = async () => {
+      const res = await fetch("/api/auth/session")
+      const session = await res.json()
+      setIsLoggedIn(!!session?.user)
+
+      // Vérifier si admin
+      if (session?.user?.email) {
+        const userRes = await fetch("/api/user/role", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: session.user.email })
+        })
+        const userData = await userRes.json()
+        setIsAdmin(userData.role === "admin")
+      }
+    }
+    checkSession()
+  }, [])
+
+  const handleLike = async () => {
+    if (!isLoggedIn) return
+  
+    const res = await fetch("/api/quotes/like", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ quote })
+    })
+  
+    const data = await res.json()
+    setIsLiked(data.liked)
+  }
+
   const generateQuote = async () => {
     if (isWriting || loading) return;
+    setIsLiked(false)
     // Clear old timeouts
     timeoutRefs.current.forEach(t => clearTimeout(t));
     timeoutRefs.current = [];
@@ -282,6 +318,17 @@ export default function Home() {
               </p>
             </div>
           </div>
+        )}
+
+        {/* Bouton Like - visible uniquement si connecté et quote générée */}
+        {quote && isLoggedIn && !isAdmin &&(
+          <button
+            onClick={handleLike}
+            className="fixed bottom-28 right-10 text-4xl transition-transform hover:scale-125 z-50"
+            title={isLiked ? "Unlike" : "Like"}
+          >
+            {isLiked ? "❤️" : "🤍"}
+          </button>
         )}
 
         {isScrolling && (
