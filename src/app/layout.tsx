@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ConditionalHeader from "@/components/ConditionalHeader";
+import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/components/footer/Footer";
+import Starfield from "@/components/Starfield";
+import { SessionProvider } from "next-auth/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +30,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <SessionProvider>
+            <Starfield />
+            <div className="app-shell">
+              <ConditionalHeader />
+              <Navbar />
+              <main className="flex-grow page-center">{children}</main>
+              <Footer />       
+            </div>
+          </SessionProvider>
       </body>
     </html>
   );
