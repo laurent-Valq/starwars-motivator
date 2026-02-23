@@ -73,7 +73,7 @@ export default async function HomePage() {
 
         {/* Subtitle */}
         <p className="text-xl md:text-2xl text-black" style={{ textShadow: '0 0 4px #FFE81F' }}>
-          Generate inspiring Star Wars quotes powered by AI
+          Generate inspiring Star Wars quotes powered by The Force
         </p>
 
         {/* Primary CTA */}
