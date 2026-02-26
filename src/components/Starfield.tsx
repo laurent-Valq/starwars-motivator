@@ -2,7 +2,15 @@
 
 import { useEffect, useState } from "react"
 
-const generateStars = (count: number) => {
+interface Star {
+  id: number;
+  x: number;
+  y: number;
+  size: string;
+  delay: number;
+}
+
+const generateStars = (count: number): Star[] => {
   return Array.from({ length: count }, (_, i) => ({
     id: i,
     x: Math.random() * 100,
@@ -13,7 +21,7 @@ const generateStars = (count: number) => {
 }
 
 export default function Starfield() {
-  const [stars, setStars] = useState<any[]>([])
+  const [stars, setStars] = useState<Star[]>([])
 
   useEffect(() => {
     setStars(generateStars(200))

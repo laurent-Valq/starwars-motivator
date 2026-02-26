@@ -48,7 +48,7 @@ export default function RegisterPage() {
         // Redirection vers login après création du compte
         router.push("/login?registered=true")
       }
-    } catch (error) {
+    } catch {
       setError("Something went wrong")
     } finally {
       setLoading(false)

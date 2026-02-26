@@ -77,7 +77,7 @@ export default function FavoritesClient() {
                 className="bg-cyan-500/20 backdrop-blur-sm p-6 rounded-lg border-2 border-cyan-400"
                 style={{ boxShadow: '0 0 40px rgba(34, 211, 238, 0.6)' }}
               >
-                <p className="text-lg mb-4 text-center">"{quote.quote}"</p>
+                <p className="text-lg mb-4 text-center">&ldquo;{quote.quote}&rdquo;</p>
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-400">
                     {new Date(quote.createdAt).toLocaleDateString()}

@@ -3,7 +3,15 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
-const generateStars = (count: number) => {
+interface Star {
+  id: number;
+  x: number;
+  y: number;
+  size: string;
+  delay: number;
+}
+
+const generateStars = (count: number): Star[] => {
   return Array.from({ length: count }, (_, i) => ({
     id: i,
     x: Math.random() * 100,
@@ -20,7 +28,7 @@ export default function Home() {
   const [showScroll, setShowScroll] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
   const [isSoundOn, setIsSoundOn] = useState(true);
-  const [stars, setStars] = useState<any[]>([]);
+  const [stars, setStars] = useState<Star[]>([]);
   const [language, setLanguage] = useState<"fr" | "en">("fr");
   const [isLiked, setIsLiked] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)

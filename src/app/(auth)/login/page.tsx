@@ -50,7 +50,7 @@ export default function LoginPage() {
         router.refresh()
       }
 
-    } catch (error) {
+    } catch {
       setError("Something went wrong")
     } finally {
       setLoading(false)
@@ -128,7 +128,7 @@ export default function LoginPage() {
         </form>
 
         <p className="text-center text-sm">
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <Link href="/register" className="text-[#FACC15] hover:underline font-bold">
             Register here
           </Link>
