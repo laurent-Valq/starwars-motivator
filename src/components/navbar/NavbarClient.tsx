@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation"
 import Links from "./links/Links"
 import styles from "./navbar.module.css"
+import { useState } from "react"
 
 export default function NavbarClient({ 
   isAdmin, 
@@ -14,6 +15,7 @@ export default function NavbarClient({
   hiddenRoutes: string[]
 }) {
   const pathname = usePathname()
+  const [menuOpen, setMenuOpen] = useState(false)
 
   if (hiddenRoutes.includes(pathname)) {
     return null
@@ -26,8 +28,16 @@ export default function NavbarClient({
         <br />
         <span style={{ fontFamily: 'Impact, Arial Black, sans-serif' }}>MOTIVATOR</span>
       </div>
-      <div>
-        <Links isAdmin={isAdmin} isConnected={isConnected} /> 
+
+      <button
+        className={styles.hamburger}
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        <span /><span /><span />
+      </button>
+
+      <div className={`${styles.links} ${menuOpen ? styles.open : ""}`}>
+        <Links isAdmin={isAdmin} isConnected={isConnected} />
       </div>
     </div>
   )
