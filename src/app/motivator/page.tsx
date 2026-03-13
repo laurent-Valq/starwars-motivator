@@ -197,11 +197,11 @@ export default function Home() {
         </div>
       )}
 
-      <main className="flex flex-col items-center justify-start pt-160 min-h-screen bg-black text-yellow-400 overflow-hidden">
+      <main className="flex flex-col items-center justify-start pt-20 min-h-screen bg-black text-yellow-400 overflow-hidden">
 
         <div className="fixed bottom-0 left-0 w-full h-44 bg-gradient-to-t from-black via-black/80 to-transparent z-10 pointer-events-none"></div>
 
-        <h1 className={`text-6xl font-bold tracking-widest animate-fade-in mb-8 title-crawl relative z-30 star-wars-font text-black transition-opacity duration-5000 px-8 ${showScroll ? 'opacity-20' : 'opacity-100'}`}
+        <h1 className={`text-3xl md:text-4xl lg:text-6xl font-bold tracking-wider md:tracking-widest animate-fade-in mb-8 title-crawl relative z-30 star-wars-font text-black transition-opacity duration-5000 px-8 text-center ${showScroll ? 'opacity-20' : 'opacity-100'}`}
             style={{ 
               textShadow: '0 0 4px rgba(255, 232, 31, 0.5), 0 0 8px rgba(255, 232, 31, 0.25)', 
               WebkitTextStroke: '2px #FFE81F'
