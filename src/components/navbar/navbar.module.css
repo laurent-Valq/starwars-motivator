@@ -6,6 +6,7 @@
   padding: 0 20px;
   color: #FACC15;
   position: relative;
+  z-index: 1000;
 }
 
 .logo {
@@ -57,5 +58,6 @@
 
   .links.open {
     display: flex;
+    z-index: 1000;
   }
 }
