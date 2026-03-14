@@ -108,6 +108,9 @@ body {
     transform: translateX(-50%) rotateX(90deg) scale(0.05);
   }
 }
+
+
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -203,5 +206,45 @@ body {
   backdrop-filter: blur(4px);
   border: 2px solid rgb(34, 211, 238);
   box-shadow: 0 0 40px rgba(34, 211, 238, 0.6);
+}
+
+@media (max-width: 768px) {
+  @keyframes crawlUp {
+    0% {
+      bottom: -100%;
+      opacity: 1;
+      transform: translateX(-50%) rotateX(30deg) scale(1.2);
+    }
+    15% {
+      bottom: -20%;
+      opacity: 1;
+      transform: translateX(-50%) rotateX(35deg) scale(1.0);
+    }
+    30% {
+      bottom: 10%;
+      opacity: 1;
+      transform: translateX(-50%) rotateX(45deg) scale(0.8);
+    }
+    50% {
+      bottom: 35%;
+      opacity: 1;
+      transform: translateX(-50%) rotateX(60deg) scale(0.5);
+    }
+    70% {
+      bottom: 55%;
+      opacity: 0;
+      transform: translateX(-50%) rotateX(75deg) scale(0.2);
+    }
+    85% {
+      bottom: 60%;
+      opacity: 0;
+      transform: translateX(-50%) rotateX(85deg) scale(0.1);
+    }
+    100% {
+      bottom: 60%;
+      opacity: 0;
+      transform: translateX(-50%) rotateX(90deg) scale(0.05);
+    }
+  }
 }
 
