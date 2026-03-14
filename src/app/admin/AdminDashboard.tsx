@@ -130,7 +130,7 @@ export default function AdminDashboard({
                       </span>
                     </td>
                     <td className="p-2">{user._count.likedQuotes}</td>
-                    <td className="p-2">{new Date(user.createdAt).toLocaleDateString()}</td>
+                    <td className="p-2">{new Date(user.createdAt).toLocaleDateString('fr-FR')}</td>
                     <td className="p-2">
                       <div className="flex gap-2">
                         {!user.isActive && (
