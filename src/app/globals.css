@@ -47,6 +47,10 @@ body {
   font-family: 'StarJedi', sans-serif;
 }
 
+.star-wars-font-outline {
+  font-family: 'StarJout', sans-serif;
+}
+
 /* --- Animation de défilement vertical --- */
 
 .scroll-container {

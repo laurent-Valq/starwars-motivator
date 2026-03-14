@@ -201,14 +201,14 @@ export default function Home() {
 
         <div className="fixed bottom-0 left-0 w-full h-44 bg-gradient-to-t from-black via-black/80 to-transparent z-10 pointer-events-none"></div>
 
-        <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold tracking-widest animate-fade-in mb-8 title-crawl relative z-30 star-wars-font text-black transition-opacity duration-5000 px-4 sm:px-8 text-center ${showScroll ? 'opacity-20' : 'opacity-100'}`}
+        <h1 className={`text-3xl sm:text-5xl md:text-6xl font-bold tracking-widest animate-fade-in mb-8 title-crawl relative z-30 star-wars-font text-black transition-opacity duration-5000 px-4 sm:px-8 text-center ${showScroll ? 'opacity-20' : 'opacity-100'}`}
             style={{ 
               textShadow: '0 0 4px rgba(255, 232, 31, 0.5), 0 0 8px rgba(255, 232, 31, 0.25)', 
               WebkitTextStroke: '2px #FFE81F'
             }}>
           STAR WARS 
           <br />
-          MOTIVATOR
+          motivator
         </h1>
 
         {/* Home Button - Top Left */}
@@ -298,7 +298,7 @@ export default function Home() {
           disabled={loading || isWriting}
           className={`
             text-black font-bold px-4 sm:px-6 py-3 rounded-lg shadow-md relative z-20
-            transition-transform duration-300 text-sm sm:text-base max-w-[90vw] text-center
+            transition-transform duration-300 text-xs sm:text-sm md:text-base max-w-[85vw] sm:max-w-[90vw] text-center mx-4
             ${loading || isWriting
               ? "opacity-18 cursor-not-allowed bg-[#FFE81F]"
               : "hover:bg-yellow-300 hover:scale-105 bg-[#FFE81F]"}
