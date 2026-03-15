@@ -1,4 +1,9 @@
 @import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
 /* --- Star Wars font --- */
 @font-face {
   font-family: 'StarJedi';
@@ -191,14 +196,23 @@ body {
 }
 
 .container{
-  width: 1536px;
-  margin: auto;
-  padding-left: 50px;
-  padding-right: 50px;
+  width: 100%;
+  max-width: 1536px;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .container{
+    padding-left: 50px;
+    padding-right: 50px;
+  }
 }
 
 .hologram-card {
