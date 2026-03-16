@@ -49,7 +49,7 @@ export default function FavoritesClient() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center text-[#FFE81F]">
-        <p className="text-xl">Chargement de vos citations...</p>
+        <p className="text-xl">Loading your quotes...</p>
       </div>
     )
   }
@@ -57,11 +57,11 @@ export default function FavoritesClient() {
   return (
     <div className="min-h-screen p-8 text-[#FFE81F]">
       <div className="max-w-4xl mx-auto space-y-8">
-        <h1 className="text-4xl font-bold text-center">Mes Citations Favorites</h1>
+        <h1 className="text-4xl font-bold text-center">My Favorite Quotes</h1>
 
         {quotes.length === 0 ? (
           <div className="text-center space-y-4">
-            <p className="text-gray-300">Aucune citation favorite pour le moment.</p>
+            <p className="text-gray-300">No favorite quotes yet.</p>
             <button
               onClick={() => router.push("/motivator")}
               className="px-6 py-3 bg-[#FFE81F] text-black font-bold rounded-lg hover:bg-yellow-300 transition-colors"

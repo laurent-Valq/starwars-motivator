@@ -80,7 +80,7 @@ export default function AdminDashboard({
   }
 
   return (
-    <div className="min-h-screen p-8 text-[#FFE81F]">
+    <div className="min-h-screen px-3 py-6 md:p-8 text-[#FFE81F]">
       <div className="max-w-6xl mx-auto space-y-8">
         <h1 className="text-4xl font-bold">Admin Dashboard</h1>
 
@@ -101,7 +101,7 @@ export default function AdminDashboard({
         <div className="bg-cyan-500/20 backdrop-blur-sm p-6 rounded-lg border-2 border-cyan-400" style={{ boxShadow: '0 0 40px rgba(34, 211, 238, 0.6)' }}>
           <h2 className="text-2xl font-bold mb-4">Users</h2>
           
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto md:overflow-visible -mx-3 px-3 md:mx-0 md:px-0">
             <table className="w-full">
               <thead>
                 <tr className="border-b border-cyan-400">
@@ -130,7 +130,7 @@ export default function AdminDashboard({
                       </span>
                     </td>
                     <td className="p-2">{user._count.likedQuotes}</td>
-                    <td className="p-2">{new Date(user.createdAt).toLocaleDateString()}</td>
+                    <td className="p-2">{new Date(user.createdAt).toLocaleDateString('fr-FR')}</td>
                     <td className="p-2">
                       <div className="flex gap-2">
                         {!user.isActive && (
