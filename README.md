@@ -1,70 +1,67 @@
 # 🌌 Star Wars Motivator
 
-Mini-app **Next.js + Tailwind + OpenAI** qui génère une citation inspirante de l’univers Star Wars.
+A **Next.js + Tailwind + OpenAI** app that generates inspiring quotes from the Star Wars universe.
+
+🔗 [Live Demo](https://starwars-motivator.vercel.app)
 
 ---
 
-## 🧱 Étape 1 – Mise en place du projet
-- Initialisation du projet avec **Next.js**, **TypeScript** et **Tailwind CSS**
-- Suppression du code par défaut et création d’une **landing page minimaliste**
-- Mise en place de **Git** et du dépôt **GitHub**.
-- Création de la branche `feat/landing-skeleton`.
-- Première version du **README** et configuration du workflow.
+## 🧱 Tech Stack
+
+Next.js • TypeScript • TailwindCSS • OpenAI API • NextAuth • Prisma • PostgreSQL (Neon) • Vercel • Git/GitHub
 
 ---
 
-## ✨ Étape 2 – Interface & Mock Quotes
-Créer une interface simple et interactive pour permettre à l’utilisateur de générer une citation inspirante de l’univers Star Wars.
+## ✨ Features
 
-### 🧩 Réalisations
-- Ajout d’un bouton **“Générer une citation”**.
-- Intégration d’une liste de **citations simulées (mock quotes)**.
-- Génération aléatoire d’une citation au clic.
-- Mise en forme avec **Tailwind CSS** pour un rendu minimaliste et immersif.
-
-### 🧠 Points techniques
-- Utilisation du hook **`useState`** pour gérer la citation affichée.
-- Gestion d’un **événement `onClick`** sur le bouton pour déclencher la génération.
-- Structure du composant sous forme de **fonction React client-side**.
-
-### ✅ Résultat
-Une page responsive affichant un bouton et une citation différente à chaque clic.
----
-
-## 🧩 Stack technique
-Next.js • TypeScript • TailwindCSS • OpenAI API • Vercel • Git/GitHub
+- 🎬 Star Wars quote generation via **OpenAI GPT-4o-mini**
+- 🌍 **FR / EN** language toggle
+- 🔊 Sound toggle — space ambiance + Star Wars theme
+- 📜 **Crawl animation** Star Wars style to display quotes
+- ❤️ **Like system** (favorites) for logged-in users
+- 🔐 Full **authentication** (login / register / forgot password)
+- 👤 **Admin / user** roles
+- 🛠️ **Admin dashboard** — user management (activation, deletion)
+- 📱 **Responsive** — hamburger menu on mobile/tablet
 
 ---
 
+## 🗂️ Architecture
 
-## 🚀 Étape 3 : Intégration de l’API OpenAI
-
-### Objectif
-Connecter le front-end à une route API interne pour générer en temps réel des citations inspirées de Star Wars grâce à OpenAI.
-
-### Fichiers concernés
-- `src/app/api/generate/route.ts`  
-- `src/app/page.tsx`  
-- `.env.local` (non versionné)
-
-### Détails techniques
-- Création d’un endpoint `/api/generate` utilisant le modèle **gpt-4o-mini**.  
-- Le front appelle cette route via `fetch("/api/generate")`.  
-- Gestion des erreurs 401 et 429 avec messages clairs dans la console.  
-- Clé OpenAI stockée localement dans `.env.local` (jamais commitée).
-
-### Tests
-- Lancer `npm run dev`.  
-- Cliquer sur **“Générer une citation”**.  
-- Vérifier que la réponse renvoie une phrase motivante dans le style Star Wars.
-
-### Résultat attendu
-Une citation générée dynamiquement apparaît sous le bouton, confirmant la bonne communication front ↔ API ↔ OpenAI.
+- `src/app/` — Next.js pages (App Router)
+- `src/app/api/` — API routes (generate, auth, admin, quotes)
+- `src/components/` — Reusable components (Navbar, Links...)
+- `src/lib/` — Prisma client
+- `prisma/schema.prisma` — Data model
 
 ---
 
-
-## 🚀 Démarrer le projet
+## 🚀 Getting Started
 ```bash
 npm install
 npm run dev
+```
+
+### Environment variables (`.env.local`)
+```env
+OPENAI_API_KEY=your_key
+DATABASE_URL=your_neon_postgresql_url
+NEXTAUTH_SECRET=your_secret
+NEXTAUTH_URL=http://localhost:3000
+```
+
+---
+
+## 🗄️ Database
+
+Prisma + PostgreSQL hosted on **Neon**.
+```bash
+npx prisma migrate dev
+npx prisma generate
+```
+
+---
+
+## 📦 Deployment
+
+Deployed on **Vercel** — automatic redeployment on every push to `main`.
